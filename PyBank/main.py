@@ -2,10 +2,9 @@ import os, csv, pathlib
 from statistics import mean
 
 
-#set filepath using os.path.join to allow use between different operating systems
-# os.chdir()
-# filepath = os.path.join(".", "Resources", "budget_data.csv")
+#set filepath using pathlib
 filepath = pathlib.Path(__file__).parent / 'Resources' / 'budget_data.csv'
+
 #open csv, store header, and assign starter variables
 
 with open(filepath, 'r') as budget_data:

@@ -1,7 +1,7 @@
 import os, csv, pathlib
 
 
-#set filepath using os.path.join to allow use between different operating systems
+#set filepath using pathlib 
 
 filepath = pathlib.Path(__file__).parent / 'Resources' / 'election_data.csv'
 
@@ -18,6 +18,7 @@ with open(filepath, 'r') as election_data:
     degette_votes = 0
     doane_votes = 0
     winner = ""
+    #iterate to find vote totals
     for row in rows:
         if row[2] == names[0]:
             stockham_votes+=1
@@ -25,6 +26,7 @@ with open(filepath, 'r') as election_data:
             degette_votes+=1
         elif row[2] == names[2]:
             doane_votes +=1
+    #use vote totals to calculate results
     if stockham_votes > degette_votes and doane_votes:
         winner = names[0]
     elif degette_votes > stockham_votes and doane_votes:
@@ -35,6 +37,7 @@ with open(filepath, 'r') as election_data:
     stockham_percent = (stockham_votes / total_votes)*100
     degette_percent = (degette_votes / total_votes)*100
     doane_percent = (doane_votes / total_votes)*100
+    #export and print results
     results = f'''
                 Election Results
                 ---------------------------
